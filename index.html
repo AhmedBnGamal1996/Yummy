@@ -1,112 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Yummy</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta name="description" content="Exam JavaScript" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, Bootstrap, fontawesome"
+    />
+    <meta name="Author" content="Ahmed Gamal" />
+    <title>Yummy Exam </title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="styles/main.css" rel="stylesheet" />
   </head>
-
   <body>
-    <div
-      class="loading-screen position-fixed top-0 start-0 end-0 bottom-0 bg-black justify-content-center align-items-center"
-    >
-      <i class="fa fa-spinner fa-spin fa-5x"></i>
+    <div class="loader__outer">
+      <div class="loader">
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
+      </div>      
+      
     </div>
-
-    <div class="side-nav-menu min-vh-100 position-fixed d-flex top-0">
-      <div
-        class="nav-tab d-flex flex-column justify-content-between min-vh-100 p-4"
-      >
-        <div class="links">
-          <ul class="list-unstyled overflow-hidden">
-            <li
-              onclick="showSearchInputs(); closeSideNav()"
-              class="py-2 position-relative cursor-pointer"
-            >
-              Search
+    <aside>
+      <div class="d-flex justify-content-between flex-column p-3">
+        <ul class="sidebar__list">
+          <li class="sidebar__list__item" data-page="search">
+            <a href="#" class="sidebar__list__item__link"> search </a>
+          </li>
+          <li class="sidebar__list__item" data-page="categories">
+            <a href="#" class="sidebar__list__item__link"> categories </a>
+          </li>
+          <li class="sidebar__list__item" data-page="area">
+            <a href="#" class="sidebar__list__item__link"> area </a>
+          </li>
+          <li class="sidebar__list__item" data-page="ingredients">
+            <a href="#" class="sidebar__list__item__link"> ingredients </a>
+          </li>
+          <li class="sidebar__list__item" data-page="contact-us">
+            <a href="#" class="sidebar__list__item__link"> contact us </a>
+          </li>
+        </ul>
+        <div>
+          <ul class="d-flex gap-2">
+            <li>
+              <a href="#">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
             </li>
-            <li
-              onclick="getCategories(); closeSideNav()"
-              class="py-2 position-relative cursor-pointer"
-            >
-              Categories
+            <li>
+              <a href="#">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
             </li>
-            <li
-              onclick="getArea(); closeSideNav()"
-              class="py-2 position-relative cursor-pointer"
-            >
-              Area
-            </li>
-            <li
-              onclick="getIngredients(); closeSideNav()"
-              class="py-2 position-relative cursor-pointer"
-            >
-              Ingredients
-            </li>
-            <li
-              onclick="showContacts(); closeSideNav()"
-              class="py-2 position-relative cursor-pointer"
-            >
-              Contact Us
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-globe"></i>
+              </a>
             </li>
           </ul>
+          <p class="text-white">Copyright Â  &copy; 2019 All Rights Reserved</p>
         </div>
-        <div class="nav-footer">
-          <div class="icons">
-            <a href=""
-              ><i class="fa-brands fa-facebook "></i
-            ></a>
-            <a href=""
-              ><i class="fa-brands fa-twitter"></i
-            ></a>
-            <a href=""
-              ><i class="fa-solid fa-globe"></i
-            ></a>
+      </div>
+      <div class="sidebar__toggle__menu">
+        <div class="sidebar__logo">
+          <img src="images/logo.png" alt="logo" />
+        </div>
+        <button class="sidebar__btn" aria-label="toggle-sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="sidebar__links">
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-share-nodes"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-globe"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <section>
+      <div class="container py-3" id="pages"></div>
+      <div class="meal__details text-light">
+        <button
+          class="text-white meal__details__close"
+          aria-label="close-sidebar"
+        >
+          <i class="fa-solid fa-xmark fa-2x"></i>
+        </button>
+        <div class="container">
+          <div class="row gap-3">
+            <div class="d-flex gap-3 flex-column col-lg-4">
+              <img
+                src=""
+                alt=""
+                class="meal__details__image rounded"
+                loading="lazy"
+              />
+              <h3 class="meal__details__title"></h3>
+            </div>
+            <div class="col-lg-7 gap-2 d-flex flex-column">
+              <h3>Instructions</h3>
+              <p class="meal__details__instructions"></p>
+              <h3>
+                Area:
+                <span class="meal__details__area fw-normal"></span>
+              </h3>
+              <h3>
+                Category:
+                <span class="meal__details__category fw-normal"></span>
+              </h3>
+              <div class="d-flex flex-wrap">
+                <h3>Recipes:</h3>
+                <ol class="meal__details__ingredients"></ol>
+              </div>
+              <div class="d-flex gap-3 align-items-center">
+                <h3>Tags:</h3>
+                <ul
+                  class="meal__details__tags fw-bold d-flex flex-wrap align-items-center gap-3 p-0 m-0"
+                ></ul>
+              </div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <a
+                  href=""
+                  class="meal__details__source btn btn-outline-light"
+                  target="_blank"
+                >
+                  Source
+                  <i class="fa-solid fa-link"></i>
+                </a>
+                <a
+                  href=""
+                  class="meal__details__youtube btn btn-outline-danger"
+                  target="_blank"
+                >
+                  Youtube
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="footer">
-            <p>
-              Copyright Â© 2019 All Rights Reserved.
-            </p>
-          </div>
         </div>
       </div>
-      <div
-        class="nav-header d-flex flex-column justify-content-between py-4 text-center px-2 bg-white text-black"
-      >
-        <img class="logo" src="imgs/logo.png" alt="" srcset="" />
-        <i class="fa-solid open-close-icon fa-align-justify fa-2x"></i>
-        <div>
-          <a href=""
-            ><i class="fa-solid fa-globe d-block"></i
-          ></a>
-          <a href=""
-            ><i class="fa-solid fa-share-nodes"></i
-          ></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="container w-75" id="searchContainer"></div>
-
-    <div class="min-vh-100 position-relative">
-      <div
-        class="inner-loading-screen top-0 start-0 end-0 bottom-0 justify-content-center align-items-center"
-      >
-        <i class="fa fa-spinner fa-spin fa-5x"></i>
-      </div>
-
-      <div class="container">
-        <div class="row py-5 g-4" id="rowData"></div>
-      </div>
-    </div>
-
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/index.js"></script>
+    </section>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
